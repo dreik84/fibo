@@ -1,1 +1,1 @@
-# fibo
+# Fibonacci sequence
