@@ -1,5 +1,7 @@
 package example.org;
 
+import java.util.stream.Stream;
+
 public class Fibo {
 
     public static long findFibo(int numOfElement) {
@@ -24,5 +26,14 @@ public class Fibo {
         if (numOfElement == 2) return 1;
 
         return findFiboRecursive(numOfElement - 1) + findFiboRecursive(numOfElement - 2);
+    }
+
+    public static long findFiboStream(int numOfElement) {
+
+        return Stream.iterate(new int[]{0, 1}, arr -> new int[]{arr[1], arr[0] + arr[1]})
+                .limit(numOfElement)
+                .map(y -> y[0])
+                .mapToInt(Integer::intValue)
+                .sum();
     }
 }
