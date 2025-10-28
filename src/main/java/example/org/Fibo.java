@@ -1,17 +1,19 @@
 package example.org;
 
+import java.math.BigInteger;
+
 public class Fibo {
     public static long[] fiboCache;
 
-    public static long findFibo(int numOfElement) {
-        long num1 = 0;
-        long num2 = 1;
+    public static BigInteger findFibo(int numOfElement) {
+        BigInteger num1 = new BigInteger("0");
+        BigInteger num2 = new BigInteger("1");
 
         if (numOfElement == 1) return num1;
         if (numOfElement == 2) return num2;
 
         for (int i = 2; i < numOfElement; i++) {
-            long sum = num1 + num2;
+            BigInteger sum = num1.add(num2);
             num1 = num2;
             num2 = sum;
         }
@@ -19,12 +21,14 @@ public class Fibo {
         return num2;
     }
 
-    public static long findFiboRecursive(int numOfElement) {
+    public static BigInteger findFiboRecursive(int numOfElement) {
+        BigInteger num1 = new BigInteger("0");
+        BigInteger num2 = new BigInteger("1");
 
-        if (numOfElement <= 1) return 0;
-        if (numOfElement == 2) return 1;
+        if (numOfElement <= 1) return num1;
+        if (numOfElement == 2) return num2;
 
-        return findFiboRecursive(numOfElement - 1) + findFiboRecursive(numOfElement - 2);
+        return findFiboRecursive(numOfElement - 1).add(findFiboRecursive(numOfElement - 2));
     }
 
     public static long findFiboRecursiveWithCache(int numOfElement) {

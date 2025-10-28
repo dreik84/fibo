@@ -1,12 +1,14 @@
 package example.org;
 
+import java.math.BigInteger;
+
 public class FiboApp {
     public static void main(String[] args) {
-        int numOfElement = 50;
+        int numOfElement = 100;
 
         long start = System.currentTimeMillis();
 
-        long fibo = Fibo.findFibo(numOfElement);
+        BigInteger fibo = Fibo.findFibo(numOfElement);
 
         long end = System.currentTimeMillis();
 
@@ -24,11 +26,11 @@ public class FiboApp {
 
         start = System.currentTimeMillis();
 
-        fibo = Fibo.findFiboRecursiveWithCache(numOfElement);
+        long fiboLong = Fibo.findFiboRecursiveWithCache(numOfElement);
 
         end = System.currentTimeMillis();
 
         System.out.printf("Calculate the %dth element of the Fibonacci sequence: %d in %d milliseconds\n",
-                numOfElement, fibo, end - start);
+                numOfElement, fiboLong, end - start);
     }
 }
